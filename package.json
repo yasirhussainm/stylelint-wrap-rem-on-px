@@ -1,5 +1,5 @@
 {
-  "name": "stylelint-rem-over-px",
+  "name": "stylelint-wrap-rem-on-px",
   "version": "1.0.1",
   "description": "A stylelint rule to enforce the usage of rem units over px units.",
   "main": "index.js",
@@ -8,18 +8,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/a-tokyo/stylelint-rem-over-px.git"
+    "url": "https://github.com/yasirhussainm/stylelint-wrap-rem-on-px.git"
   },
   "author": {
-    "name": "Ahmed Tarek",
-    "email": "ahmed.tokyo1@gmail.com",
-    "url": "https://github.com/A-Tokyo"
+    "name": "Yasir Hussain M",
+    "email": "yasirkhd@gmail.com",
+    "url": "https://github.com/yasirhussainm"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/a-tokyo/stylelint-rem-over-px/issues"
+    "url": "https://github.com/yasirhussainm/stylelint-wrap-rem-on-px/issues"
   },
-  "homepage": "https://github.com/a-tokyo/stylelint-rem-over-px",
+  "homepage": "https://github.com/yasirhussainm/stylelint-wrap-rem-on-px",
   "scripts": {
     "test": "tape __tests__"
   },
