@@ -13,7 +13,7 @@ const ruleName = `${PLUGIN_NAME}/rem-over-px`;
 const messages = stylelint.utils.ruleMessages(ruleName, {
   /** Report message for prefer rem over px */
   remOverPx(val = '') {
-    return `Expected px unit in "${val}" to be rem.`;
+    return `Expected px unit in "${val}" to be wrapped in rem() function.`;
   },
 });
 
@@ -25,8 +25,6 @@ const defaultSecondaryOptions = {
   ignoreFunctions: ['url'],
   /** @ rules to ignore */
   ignoreAtRules: ['media'],
-  /** Base font size - used by autofix to convert px to rem */
-  fontSize: 16,
 };
 
 /** Regex to match pixels declarations in a string */
@@ -34,8 +32,8 @@ const defaultSecondaryOptions = {
 const regexPX = new RegExp(/(\d+\.?\d*)px/, 'g');
 
 /** Converts a string with px units to rem */
-const _pxToRem = (CSSString = '', fontSize = defaultSecondaryOptions.fontSize || 16) =>
-  CSSString.replace(regexPX, (match, n) => `${n / fontSize}rem`);
+const _pxToRem = (CSSString = '') =>
+  CSSString.replace(regexPX, (match, n) => `rem(${n})`);
 
 /** checks if prop is in ignore list */
 const _propInIgnoreList = (prop, list) =>
@@ -152,8 +150,7 @@ const pluginHandler =
         if (context.fix) {
           // Apply fixes using PostCSS API
           declaration.value = _pxToRem(
-            declaration.value,
-            secondaryOptionObject.fontSize,
+            declaration.value
           );
 
           // Return and don't report a problem
@@ -176,7 +173,7 @@ const pluginHandler =
         /* handle fixing */
         if (context.fix) {
           // Apply fixes using PostCSS API
-          atRule.value = _pxToRem(atRule.value, secondaryOptionObject.fontSize);
+          atRule.value = _pxToRem(atRule.value);
 
           // Return and don't report a problem
           return;
