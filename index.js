@@ -4,10 +4,10 @@ const stylelint = require('stylelint');
 const valueParser = require('postcss-value-parser');
 
 /** plugin name - prefixes all rules as per stylelint requirements */
-const PLUGIN_NAME = 'rem-over-px';
+const PLUGIN_NAME = 'wrap-rem-on-px';
 
-/** rule name for rem-over-px */
-const ruleName = `${PLUGIN_NAME}/rem-over-px`;
+/** rule name for wrap-rem-on-px */
+const ruleName = `${PLUGIN_NAME}/wrap-rem-on-px`;
 
 /** rule messages */
 const messages = stylelint.utils.ruleMessages(ruleName, {
@@ -133,7 +133,7 @@ const _hasForbiddenPX = (node, options) => {
   return hasPX;
 };
 
-/** rem-over-px plugin handler */
+/** wrap-rem-on-px plugin handler */
 const pluginHandler =
   (
     primaryOption,
@@ -194,7 +194,7 @@ const pluginHandler =
   };
 
 /**
- * Stylelint plugin rem-over-px
+ * Stylelint plugin wrap-rem-on-px
  *
  * Enforces the usage of rem units over px units.
  */
