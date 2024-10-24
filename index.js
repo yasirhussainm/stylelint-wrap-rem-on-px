@@ -29,11 +29,14 @@ const defaultSecondaryOptions = {
 
 /** Regex to match pixels declarations in a string */
 // eslint-disable-next-line
-const regexPX = new RegExp(/(\d+\.?\d*)px/, 'g');
+const regexPX = new RegExp(/-?\d+\.?\d*px/, 'g');
 
 /** Converts a string with px units to rem */
 const _pxToRem = (CSSString = '') =>
-  CSSString.replace(regexPX, (match, n) => `rem(${n})`);
+  CSSString.replace(regexPX, (match) => {
+    const n = parseFloat(match);
+    return `rem(${n})`
+  });
 
 /** checks if prop is in ignore list */
 const _propInIgnoreList = (prop, list) =>
